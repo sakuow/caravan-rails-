@@ -1,7 +1,6 @@
 class BlogsController < ApplicationController
   def index
     @blogs = Blog.all
-
   end
 
   def show
@@ -25,6 +24,12 @@ class BlogsController < ApplicationController
     blog = Blog.new(blog_params)
     blog.save
     redirect_to blog_path(blog.id)
+  end
+
+  def destroy
+    blog = Blog.find(params[:id])
+    blog.destroy
+    redirect_to blogs_path
   end
 
   private
